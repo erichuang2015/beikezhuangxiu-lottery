@@ -1,32 +1,129 @@
+@import '~antd/dist/antd.css';
+
 .App {
   text-align: center;
+  background-color: whitesmoke;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.head-img{
+  margin-top: -10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.head-title{
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.select-style{
+  width: 120px;
+  margin-bottom: 10px;
+  display:block;
+}
+
+.inline-block{
+  display: inline-block;
+}
+
+.foot-left{
+  margin-right: 350px;
+}
+
+.foot-right{
+  margin-left: 350px;
+}
+
+.block{
+  display:block;
+  margin-bottom: 10px;
+}
+
+.contain-wrap{
+}
+
+.wrap{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10,10,10,.8);
+}
+
+.lucky-title-word{
+  position: absolute;
+  top: 26%;
+  left: 52%;
+  transform: translate(-50%,-50%);
   color: white;
+  font-size: 60px;
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+.lucky{
+  display:flex;
+  justify-content: space-around;
+  width: 1500px;
+  color: white;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%)
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.lucky-word{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.lucky-item-img{
+  margin-bottom: 20px;
+}
+
+.list{
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  position: absolute;
+  color: white;
+  z-index: 1;
+  top: 5%;
+  left: 200px;
+}
+
+.list-item{
+  border-bottom: 1px solid;
+  margin-bottom: 70px;
+}
+
+.list-wrap{
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-around;
+  width: 1500px;
+}
+
+.list-item-img{
+
+}
+
+.list-title-word{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.list-person-word{
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.delete{
+  z-index: 2;
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 40px;
+  cursor: pointer;
+  color: white;
 }

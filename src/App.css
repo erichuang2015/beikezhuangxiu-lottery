@@ -42,11 +42,11 @@
 }
 
 .foot-left{
-  margin-right: 350px;
+  margin-right: 25vw;
 }
 
 .foot-right{
-  margin-left: 350px;
+  margin-left: 25vw;
 }
 
 .block{
@@ -79,7 +79,7 @@
 .lucky{
   display:flex;
   justify-content: space-around;
-  width: 1400px;
+  width: 100vw;
   color: white;
   z-index: 1;
   position: absolute;

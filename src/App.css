@@ -5,6 +5,18 @@
   background-color: whitesmoke;
 }
 
+.header{
+  height: 8vh;
+}
+
+#myCanvasContainer{
+  height: 80vh;
+}
+
+.footer{
+  height: 10vh;
+}
+
 .head-img{
   margin-top: -10px;
 }

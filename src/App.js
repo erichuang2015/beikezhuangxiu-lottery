@@ -107,7 +107,7 @@ class App extends Component {
       let randomNum = Math.floor(Math.random()*array.length)
       returnArray.push(array[randomNum])
       array.splice(randomNum,1)
-      n = n-1
+      n = n - 1
     }
     return returnArray
   }

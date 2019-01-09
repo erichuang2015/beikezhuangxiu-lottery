@@ -67,12 +67,11 @@ class App extends Component {
     this.setState({
       showButton:false
     })
-    let speed = 0.9
-    window.TagCanvas.SetSpeed('myCanvas', [2,speed])
+    let speed = Math.random()
+    window.TagCanvas.SetSpeed('myCanvas', [speed+2,speed])
     window.interval = setInterval(()=>{
-      if(speed > 0)speed = -Math.random()
-      else speed = Math.random()
-      window.TagCanvas.SetSpeed('myCanvas', [speed*7,speed])
+      speed = Math.random()
+      window.TagCanvas.SetSpeed('myCanvas', [speed+2,speed])
     },1000)
   }
 

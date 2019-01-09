@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import member from './member'
-import { Select, Button, Icon } from 'antd'
+import { Select, Button, Icon, message } from 'antd'
 import moment from 'moment'
 const { Option } = Select
 
@@ -52,7 +52,7 @@ class App extends Component {
   start = () => {
     //如果抽奖人数大于存在人数，不允许抽奖
     if(member.length < this.state.person){
-      alert('人数不够再抽奖啦')
+      message.warning('人数不够再抽奖啦！')
       this.setState({
         showButton:true
         })
@@ -61,14 +61,19 @@ class App extends Component {
     }
     //未选择抽奖人数，不允许抽奖
     if(this.state.person === 0){
-      alert('请选择抽奖人数！')
+      message.warning('请选择抽奖人数！')
       return
     }
     this.setState({
       showButton:false
     })
-    window.TagCanvas.SetSpeed('myCanvas', [2, -0.9])
-    
+    let speed = 0.9
+    window.TagCanvas.SetSpeed('myCanvas', [2,speed])
+    window.interval = setInterval(()=>{
+      if(speed > 0)speed = -Math.random()
+      else speed = Math.random()
+      window.TagCanvas.SetSpeed('myCanvas', [speed*7,speed])
+    },1000)
   }
 
   //使转速正常，抽取中奖人员放入数组，显示本轮中奖名单
@@ -81,18 +86,25 @@ class App extends Component {
       person:luckyDog
     }
     this.state.rewardArray.push(thisTurnToShow)
-    console.log(this.state.rewardArray)
     this.setState({
       showButton:true,
       showLucky:true
     })
+    clearInterval(window.interval)
     window.TagCanvas.SetSpeed('myCanvas', [0.2, -0.1])
+  }
+
+  closeLucky = () => {
+    window.TagCanvas.Reload('myCanvas')
+    this.setState({
+      showLucky:false
+    })
   }
 
   //显示所有中奖名单
   showList = () => {
     if(this.state.rewardArray.length === 0){
-      alert('请先点击开始进行抽奖！')
+      message.warning('请先点击开始进行抽奖！')
       return
     }
     this.setState({
@@ -157,7 +169,7 @@ class App extends Component {
         {/* 本轮中奖名单弹层 */}
         {this.state.showLucky && (
           <div className="contain-wrap">
-            <Icon type='close' className="delete" onClick={()=>this.setState({showLucky:false})}></Icon>
+            <Icon type='close' className="delete" onClick={this.closeLucky}></Icon>
             <div className="wrap"></div>
             <div className="lucky-title-word">中奖啦！！！</div>
             <div className="lucky">

@@ -1882,7 +1882,7 @@
         }
         if (this.noTagsMessage && !aM.length) {
             aO = (this.imageMode && this.imageMode != "both" ? this.imageMode + " " : "");
-            aM = this.Message("No " + aO + "tags")
+            aM = this.Message("没有 " + aO + "抽奖人员啦")
         }
         this.taglist = aM
     };

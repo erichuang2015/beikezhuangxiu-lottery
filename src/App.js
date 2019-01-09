@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './App.css'
 import member from './member'
 import { Select, Button, Icon } from 'antd'
-
+import moment from 'moment'
 const { Option } = Select
 
 class App extends Component {
@@ -77,7 +77,7 @@ class App extends Component {
     let luckyDog = this.lottery(member, this.state.person) //返回中奖人员数组
     let thisTurnToShow = {
       reward: this.state.reward || this.state.rewardArray.length+1,
-      time: new Date(),
+      time: moment().format('lll'),
       person:luckyDog
     }
     this.state.rewardArray.push(thisTurnToShow)

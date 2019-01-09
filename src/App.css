@@ -1,9 +1,14 @@
 @import '~antd/dist/antd.css';
 
+
 .App {
   height: 100vh;
   text-align: center;
   background-color: whitesmoke;
+}
+
+img{
+  border-radius: 50%
 }
 
 .header{
@@ -43,6 +48,12 @@
 
 .foot-left{
   margin-right: 25vw;
+}
+
+.foot-mid{
+  font-size: 30px;
+  width: 110px;
+  height: 70px;
 }
 
 .foot-right{

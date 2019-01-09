@@ -18,6 +18,8 @@ class App extends Component {
   componentDidMount = () => {
     try {
       window.TagCanvas.Start('myCanvas','',{
+        imageRadius:50,
+        imageScale:1.3,
         dragControl: 1,
         noMouse:true,
         textHeight: 14,
@@ -144,12 +146,12 @@ class App extends Component {
         </div>
         <div className="footer">
           <div className="foot-left inline-block">
-            <Select defaultValue="奖项" className='select-style' onChange={this.handleRewardChange}>
+            {/* <Select defaultValue="奖项" className='select-style' onChange={this.handleRewardChange}>
               <Option value="一等奖">一等奖</Option>
               <Option value="二等奖">二等奖</Option>
               <Option value="三等奖">三等奖</Option>
               <Option value="其他">其他</Option>
-            </Select>
+            </Select> */}
             <Select defaultValue="人数" className='select-style' onChange={this.handlePersonChange}>
               <Option value="1">1人</Option>
               <Option value="2">2人</Option>
@@ -158,12 +160,9 @@ class App extends Component {
               <Option value="5">5人</Option>
             </Select>
           </div>
-          <div className="foot-right inline-block">
-            {this.state.showButton && <Button className='block' onClick={this.start}>开始</Button>}
-            {!this.state.showButton && <Button className='block' onClick={this.stop}>停止</Button>}
-            <Button className='block' onClick={this.showList}>中奖名单</Button>
-          </div>
-          
+          {this.state.showButton && <Button className='foot-mid inline-block' onClick={this.start} type='primary'>开始</Button>}
+          {!this.state.showButton && <Button className='foot-mid inline-block' onClick={this.stop} type='primary'>停止</Button>}
+          <Button className='foot-right inline-block' onClick={this.showList}>中奖名单</Button>
         </div> 
         {/* 本轮中奖名单弹层 */}
         {this.state.showLucky && (

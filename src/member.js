@@ -17,7 +17,7 @@ export default [
   },
   {
     name:'李利德',
-    img:'./img/0.gif'
+    img:'./img/WechatIMG111.jpeg'
   },
   {
     name:'李磊',

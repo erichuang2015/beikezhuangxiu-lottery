@@ -5,6 +5,8 @@ import { Select, Button, Icon, message } from 'antd'
 import moment from 'moment'
 const { Option } = Select
 
+//奖项reward暂时不使用，如果要用，将render里的Select注释去掉即可设置奖项
+
 class App extends Component {
   state={
     reward:'',

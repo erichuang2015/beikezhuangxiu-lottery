@@ -5,6 +5,8 @@
   height: 100vh;
   text-align: center;
   background-color: whitesmoke;
+  background: url('./img/bg.jpg') no-repeat;
+  background-size: cover;
 }
 
 img{
@@ -34,6 +36,7 @@ img{
 .head-title{
   display: inline-block;
   margin-left: 10px;
+  color: #fff;
 }
 
 .select-style{
@@ -63,9 +66,6 @@ img{
 .block{
   display:block;
   margin-bottom: 10px;
-}
-
-.contain-wrap{
 }
 
 .wrap{
@@ -132,10 +132,6 @@ img{
   width: 90vw;
 }
 
-.list-item-img{
-
-}
-
 .list-title-word{
   font-size: 20px;
   font-weight: bold;
@@ -155,4 +151,11 @@ img{
   font-size: 40px;
   cursor: pointer;
   color: white;
+}
+
+.reset{
+  z-index: 2;
+  position: absolute;
+  bottom: 30px;
+  left: 50px;
 }

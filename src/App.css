@@ -80,7 +80,7 @@ img{
 .lucky-title-word{
   position: absolute;
   top: 24%;
-  left: 52%;
+  left: 50%;
   transform: translate(-50%,-50%);
   color: white;
   font-size: 60px;
@@ -91,6 +91,7 @@ img{
   display:flex;
   justify-content: space-around;
   width: 100vw;
+  height: 170px;
   color: white;
   z-index: 1;
   position: absolute;
@@ -107,6 +108,7 @@ img{
 
 .lucky-item-img{
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .list{
@@ -158,4 +160,9 @@ img{
   position: absolute;
   bottom: 30px;
   left: 50px;
+}
+
+.delete-line{
+  margin-top: -35px;
+  border-bottom: 1px solid white;
 }

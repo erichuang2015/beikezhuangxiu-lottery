@@ -10,7 +10,7 @@ const { Option } = Select
 class App extends Component {
   state={
     // reward: '',
-    person: 0,
+    person: 1,
     tmpArray: [],
     showList: false,
     showLucky: false,
@@ -18,11 +18,14 @@ class App extends Component {
   }
 
   componentWillMount () {
+    member.forEach((val) => {
+      val.atScene = true
+    })
     // 再次刷新页面时，删除中奖者
     if (localStorage.getItem('rewardArray')) {
       let array = JSON.parse(localStorage.getItem('rewardArray'))
-      array.map((value) => {
-        value.person.map((val) => {
+      array.forEach((value) => {
+        value.person.forEach((val) => {
           let indexInMember = member.findIndex((v) => {
             return val.name === v.name
           })
@@ -35,6 +38,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
+    console.log(member)
     try {
       window.TagCanvas.Start('myCanvas', '', {
         imageRadius: 50,
@@ -155,6 +159,21 @@ class App extends Component {
     window.location.reload()
   }
 
+  // 是否在现场，如果不在，使这个对象在localstorage里的atScene字段置为非
+  ifAvailable (val) {
+    let array = JSON.parse(localStorage.getItem('rewardArray'))
+    // 找出array里的val并将它的atScene字段置为非
+    array.forEach((val1) => {
+      val1.person.forEach((val2) => {
+        if (val2.name === val.name) {
+          val2.atScene = !val2.atScene
+        }
+      })
+    })
+    localStorage.setItem('rewardArray', JSON.stringify(array))
+    this.forceUpdate()
+  }
+
   render () {
     return (
       <div className='App'>
@@ -182,7 +201,7 @@ class App extends Component {
               <Option value="三等奖">三等奖</Option>
               <Option value="其他">其他</Option>
             </Select> */}
-            <Select defaultValue='人数' className='select-style' onChange={this.handlePersonChange}>
+            <Select defaultValue='1人' className='select-style' onChange={this.handlePersonChange}>
               <Option value='1'>1人</Option>
               <Option value='2'>2人</Option>
               <Option value='3'>3人</Option>
@@ -199,13 +218,14 @@ class App extends Component {
           <div className='contain-wrap'>
             <Icon type='close' className='delete' onClick={this.closeLucky} />
             <div className='wrap' />
-            <div className='lucky-title-word'>中奖啦！！！</div>
+            <div className='lucky-title-word'>中奖人员</div>
             <div className='lucky'>
               {JSON.parse(localStorage.getItem('rewardArray'))[JSON.parse(localStorage.getItem('rewardArray')).length - 1].person.map((val, idx) => {
                 return (
                   <div key={idx} className='lucky-item'>
-                    <img src={require(`${val.img}`)} className='lucky-item-img' alt='' width='100' height='100' />
+                    <img src={require(`${val.img}`)} className='lucky-item-img' alt='' width='100' height='100' onClick={this.ifAvailable.bind(this, val)} />
                     <p className='lucky-word'>{val.name}</p>
+                    {!val.atScene && <p className='delete-line' />}
                   </div>
                 )
               })}
@@ -229,6 +249,7 @@ class App extends Component {
                           <div key={index} className='list-person-item'>
                             <img src={require(`${value.img}`)} className='list-item-img' alt='' width='100' height='100' />
                             <p className='list-person-word'>{value.name}</p>
+                            {!value.atScene && <p className='delete-line' />}
                           </div>
                         )
                       })}

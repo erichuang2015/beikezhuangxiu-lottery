@@ -4,4 +4,4 @@
 
 球形旋转插件使用：TagCanvas
 
-简单使用：修改member.js的抽奖人员姓名和图片（需手动上传照片至img文件夹）。命令行输入npm start即可。
+简单使用：修改member.js的抽奖人员姓名和图片（需手动上传照片至img文件夹）。命令行输入npm install && npm start即可。
